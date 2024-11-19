@@ -2,6 +2,8 @@ package org.example.o.problem;
 
 public class PersonalLoanValidator {
 
-    public boolean isValidLoan
+    public boolean isValidUserPersonalLoan(User user){
+        return false;
+    }
 
 }

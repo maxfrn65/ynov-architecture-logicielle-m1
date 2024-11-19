@@ -2,7 +2,7 @@ package org.example.o.problem;
 
 public class LoanHandler {
 
-    private PersonaLoanValidator personaLoanValidator;
+    private PersonalLoanValidator personaLoanValidator;
     private GageLoanValidator gageLoanValidator;
 
     public void approvePersonalLoan(User user){
