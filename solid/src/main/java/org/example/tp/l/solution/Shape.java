@@ -1,5 +1,6 @@
 package org.example.tp.l.solution;
 
 public abstract class Shape {
-    public abstract double getArea();
+    public abstract int calculateArea();
 }
+
