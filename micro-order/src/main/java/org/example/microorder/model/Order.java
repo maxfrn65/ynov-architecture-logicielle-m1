@@ -1,16 +1,12 @@
 package org.example.microorder.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
-@Entity
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
+@Entity
 @Table(name="orders")
 public class Order {
     @Id
@@ -19,8 +15,6 @@ public class Order {
     private String orderNumber;
     private LocalDate orderDate;
 
-    @OneToOne
-    private Product product;
-
+    private Long productId;
 
 }

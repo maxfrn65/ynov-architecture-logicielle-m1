@@ -6,10 +6,8 @@ import lombok.Data;
 public class OrderDTO {
     private Long id;
     private String orderNumber;
-    private String formattedOrderDate; // Different from entity
-    private Long productId; // Facilitates saving
-    private ProductDTO product; // Used for response
-
+    private String formattedOrderDate;
+    private Long productId; // Used for saving orders
+    private ProductDTO product; // Used for displaying order details
 
 }
-

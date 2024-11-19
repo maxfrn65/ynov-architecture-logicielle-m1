@@ -10,5 +10,6 @@ import lombok.NoArgsConstructor;
 public class ProductDTO {
     private Long id;
     private String name;
-    private double price;
+    private Double price;
+
 }
