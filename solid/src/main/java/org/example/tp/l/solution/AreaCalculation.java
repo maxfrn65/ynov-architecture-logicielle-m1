@@ -1,4 +1,4 @@
-package org.example.tp.l.enonce;
+package org.example.tp.l.solution;
 /*
 Dans ce fichier, vous trouverez une violation du Principe de Substitution de Liskov (Liskov Substitution Principle - LSP).
 Vous devez refactoriser ce fichier.
@@ -28,40 +28,29 @@ Identifiez la violation dans le code et refactorisez-le pour qu'il respecte le L
 
 public class AreaCalculation {
     public static void main(String[] args) {
-        Rectangle rectangle = new Square();
+        org.example.tp.l.enonce.Rectangle rectangle = new org.example.tp.l.enonce.Square();
         rectangle.setWidth(5);
         rectangle.setHeight(4);
         System.out.println("Aire : " + rectangle.calculateArea());
     }
 }
 
-class Rectangle {
+class Rectangle(int width, int height) extends Shape{
     protected int width;
     protected int height;
+    double area = 0;
 
-    public void setWidth(int width) {
-        this.width = width;
-    }
-
-    public void setHeight(int height) {
-        this.height = height;
-    }
-
-    public int calculateArea() {
-        return width * height;
+    public double getArea() {
+        return area = this.width * this.height;
     }
 }
 
-class Square {
-    @Override
-    public void setWidth(int width) {
-        super.setWidth(width);
-        super.setHeight(width);
-    }
+class Square extends Shape{
+    protected int length;
+    double area = 0;
 
     @Override
-    public void setHeight(int height) {
-        super.setHeight(height);
-        super.setWidth(height);
+    public double getArea() {
+        return area = this.length * 2;
     }
 }
