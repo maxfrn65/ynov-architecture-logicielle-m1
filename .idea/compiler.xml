@@ -6,8 +6,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="ntiers" />
+        <module name="design-pattern" />
         <module name="solid" />
+        <module name="ntiers" />
         <module name="micro-product" />
         <module name="micro-order" />
       </profile>
