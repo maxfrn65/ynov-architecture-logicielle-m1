@@ -4,96 +4,102 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Car {
-
-    /*----------Attributes----------*/
     private String model;
     private String engine;
     private String color;
-    private int seatNumber;
-    private String[] extras;
+    private int seats;
+    private List<String> extras;
 
-    /*----------Main constructor----------*/
-    public Car() {
-    }
-
-    public Car(CarBuilder builder) {
+    private Car(CarBuilder builder) {
         this.model = builder.model;
         this.engine = builder.engine;
         this.color = builder.color;
-        this.seatNumber = builder.seatNumber;
+        this.seats = builder.seats;
         this.extras = builder.extras;
     }
 
-    /*----------Builder----------*/
-    public static class CarBuilder {
-        private String model;
-        private String engine;
-        private String color;
-        private int seatNumber;
-        private String[] extras;
-
-        public CarBuilder(String model, String engine, int seatNumber) {
-            this.model = model;
-            this.engine = engine;
-            this.seatNumber = seatNumber;
-        }
-
-        public CarBuilder color(String color) {
-            this.color = color;
-            return this;
-        }
-
-        public CarBuilder extras(List extras) {
-            for (String item : List extras)
-            this.extras = extras;
-            return this;
-        }
-
-        public Car build() throws Exception {
-            if (this.model.equalsIgnoreCase("sport") && this.engine.equalsIgnoreCase("électrique")) {
-                throw new Exception("A sport model cannot have an electric engine.");
-            }
-        }
-    }
-
-    /*----------Getters & setters----------*/
     public String getModel() {
         return model;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
-    }
-
-    public int getSeatNumber() {
-        return seatNumber;
-    }
-
-    public void setSeatNumber(int seatNumber) {
-        this.seatNumber = seatNumber;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
     }
 
     public String getEngine() {
         return engine;
     }
 
-    public void setEngine(String engine) {
-        this.engine = engine;
+    public String getColor() {
+        return color;
     }
 
-    public String[] getExtras() {
+    public int getSeats() {
+        return seats;
+    }
+
+    public List<String> getExtras() {
         return extras;
     }
 
-    public void setExtras(String[] extras) {
-        this.extras = extras;
+    public void displayCar() {
+        System.out.println("Car Details:");
+        System.out.println("Model: " + model);
+        System.out.println("Engine: " + engine);
+        System.out.println("Color: " + color);
+        System.out.println("Seats: " + seats);
+        System.out.println("Extras: " + (extras.isEmpty() ? "None" : String.join(", ", extras)));
+    }
+
+    public static class CarBuilder {
+        private String model;
+        private String engine;
+        private String color = "undefined"; // Default value
+        private int seats;
+        private List<String> extras = new ArrayList<>();
+
+
+        public CarBuilder setModel(String model) {
+            if (!model.equals("SUV") && !model.equals("Berline") && !model.equals("Sport")) {
+                throw new IllegalArgumentException("Invalid model type.");
+            }
+            this.model = model;
+            return this;
+        }
+
+        public CarBuilder setEngine(String engine) {
+            if (!engine.equals("Électrique") && !engine.equals("Hybride") && !engine.equals("Essence")) {
+                throw new IllegalArgumentException("Invalid engine type.");
+            }
+
+            if (model != null && model.equals("Sport") && engine.equals("Électrique")) {
+                throw new IllegalArgumentException("A Sport model cannot have an electric engine.");
+            }
+
+            this.engine = engine;
+            return this;
+        }
+
+        public CarBuilder setColor(String color) {
+            this.color = color;
+            return this;
+        }
+
+        public CarBuilder setSeats(int seats) {
+            if (model != null && model.equals("SUV") && seats < 5) {
+                throw new IllegalArgumentException("SUVs must have at least 5 seats.");
+            }
+            this.seats = seats;
+            return this;
+        }
+
+        public CarBuilder addExtra(String extra) {
+            extras.add(extra);
+            return this;
+        }
+
+
+        public Car build() {
+            if (model == null || engine == null || seats == 0) {
+                throw new IllegalStateException("Model, engine, and seats must be specified.");
+            }
+            return new Car(this);
+        }
     }
 }
