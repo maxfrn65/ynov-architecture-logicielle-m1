@@ -8,7 +8,7 @@ public class Warrior extends Character{
     }
 
     @Override
-    public String useSpecialSkills() {
+    public String useSpecialSkill() {
         return "+10 damage";
     }
 

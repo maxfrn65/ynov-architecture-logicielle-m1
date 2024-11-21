@@ -15,5 +15,5 @@ public abstract class Character {
     public int getAttackPoints() {
         return ap;
     };
-    public abstract String useSpecialSkills();
+    public abstract String useSpecialSkill();
 }

@@ -8,7 +8,7 @@ public class Mage extends Character {
     }
 
     @Override
-    public String useSpecialSkills() {
+    public String useSpecialSkill() {
         return "+10 spell damage";
     }
 }

@@ -6,15 +6,15 @@ public class Demo {
         CharacterFactory factory = new CharacterFactory();
 
         Character warrior = factory.createCharacter("warrior");
-        System.out.println(warrior.getName() + " - Health: " + warrior.getHealth() + ", Attack: " + warrior.getAttack());
+        System.out.println(warrior.getName() + " - Health: " + warrior.getHP() + ", Attack: " + warrior.getAttackPoints());
         warrior.useSpecialSkill();
 
         Character mage = factory.createCharacter("mage");
-        System.out.println(mage.getName() + " - Health: " + mage.getHealth() + ", Attack: " + mage.getAttack());
+        System.out.println(mage.getName() + " - Health: " + mage.getHP() + ", Attack: " + mage.getAttackPoints());
         mage.useSpecialSkill();
 
         Character archer = factory.createCharacter("archer");
-        System.out.println(archer.getName() + " - Health: " + archer.getHealth() + ", Attack: " + archer.getAttack());
+        System.out.println(archer.getName() + " - Health: " + archer.getHP() + ", Attack: " + archer.getAttackPoints());
         archer.useSpecialSkill();
     }
 }
