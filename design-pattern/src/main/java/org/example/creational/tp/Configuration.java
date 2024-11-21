@@ -1,30 +1,38 @@
 package org.example.creational.tp;
 
-import org.example.creational.singleton.OrderManagementService;
-
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Properties;
 
 public class Configuration {
-
-    Map<String, String> settings;
     private static Configuration instance;
+    private Map<String, String> settings;
+
+
     private Configuration() {
+        settings = new HashMap<>();
+        loadDefaultSettings();
     }
 
-    public static Configuration getInstance() {
+    public static synchronized Configuration getInstance() {
         if (instance == null) {
             instance = new Configuration();
         }
         return instance;
     }
 
-    public String getSettings(String key) {
+    private void loadDefaultSettings() {
+        settings.put("db_url", "jdbc:mysql://localhost:3306/mydb");
+        settings.put("api_key", "defaultApiKey");
+        settings.put("environment", "development");
+    }
+
+
+    public String getSetting(String key) {
         return settings.get(key);
     }
 
-    public static Configuration setSettings(String key, String value) {
 
+    public void setSetting(String key, String value) {
+        settings.put(key, value);
     }
 }
