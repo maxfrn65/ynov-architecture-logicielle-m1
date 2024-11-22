@@ -1,12 +1,20 @@
 package org.example.creational.tp.prototype;
 
+import org.example.creational.tp.prototype.Model3D;
+
 public class PlaneModel extends Model3D {
-    public PlaneModel(double height, String color, String texture) {
-        super(height, color, texture);
+    public PlaneModel() {
+        this.size = "Large";
+        this.color = "Blue";
+        this.texture = "Smooth";
     }
 
     @Override
     public Model3D clone() {
-        return new PlaneModel(height, color, texture);
+        PlaneModel copy = new PlaneModel();
+        copy.setSize(this.size);
+        copy.setColor(this.color);
+        copy.setTexture(this.texture);
+        return copy;
     }
 }
